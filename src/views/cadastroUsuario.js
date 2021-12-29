@@ -32,7 +32,7 @@ class CadastroUsuario extends React.Component {
         } catch(erro){
             const msgs = erro.mensagens;
             msgs.forEach(msg => Mensagens.mensagemErro(msg));
-
+            return false;
         }
 
         this.service.salvar(usuario)
