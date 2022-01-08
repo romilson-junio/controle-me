@@ -10,6 +10,7 @@ import CadastroLancamentos from '../views/lancamentos/cadastro-lancamentos';
 import AuthService from "../app/service/authService";
 
 import { AuthConsumer } from '../main/provedorDeAutenticao'
+import LandingPage from "../views/landingPage";
 
 function RotaAutenticada( {component: Component, isUsuarioAutenticado, ...props } ){
     return (
@@ -34,8 +35,8 @@ function Rotas(props){
                 
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/cadastro-usuarios" component={CadastroUsuario}/>
-
-                <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} exact path="/" component={Home}/>
+                <Route exact path="/" component={LandingPage}/>
+                
                 <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} exact path="/home" component={Home}/>
                 <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} exact path="/consulta-lancamentos" component={ConsultaLancamentos}/>
                 <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} exact path="/cadastro-lancamentos/:id?" component={CadastroLancamentos}/>

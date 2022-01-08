@@ -1,7 +1,10 @@
 import axios from 'axios'
 
-const httpClient = axios.create({
-    baseURL: 'https://controle-me.herokuapp.com'
+const baseURL = process.env.REACT_APP_API_URL;
+
+export const httpClient = axios.create({
+    baseURL: baseURL,
+    withCredentials: true
 
 })
 
@@ -13,6 +16,12 @@ class ApiService{
     
     constructor(apiUrl){
         this.apiUrl = apiUrl;
+    }
+
+    static registrarToken(token){
+        if(token){
+            httpClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        }
     }
 
     post(url, object){
