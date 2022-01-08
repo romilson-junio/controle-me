@@ -1,13 +1,12 @@
 import React from "react";
 
-import { Switch, Route, HashRouter, Redirect } from 'react-router-dom';
+import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
 
 import CadastroUsuario from '../views/cadastroUsuario';
 import Login from '../views/login';
 import Home from '../views/home';
 import ConsultaLancamentos from '../views/lancamentos/consulta-lancamentos';
 import CadastroLancamentos from '../views/lancamentos/cadastro-lancamentos';
-import AuthService from "../app/service/authService";
 
 import { AuthConsumer } from '../main/provedorDeAutenticao'
 import LandingPage from "../views/landingPage";
@@ -30,7 +29,7 @@ function RotaAutenticada( {component: Component, isUsuarioAutenticado, ...props 
 
 function Rotas(props){
     return (
-        <HashRouter>
+        <BrowserRouter>
             <Switch>
                 
                 <Route exact path="/login" component={Login}/>
@@ -41,7 +40,7 @@ function Rotas(props){
                 <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} exact path="/consulta-lancamentos" component={ConsultaLancamentos}/>
                 <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} exact path="/cadastro-lancamentos/:id?" component={CadastroLancamentos}/>
             </Switch>
-        </HashRouter>
+        </BrowserRouter>
     )
 }
 

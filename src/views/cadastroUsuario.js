@@ -7,6 +7,7 @@ import FormGroup from "../components/form-group";
 import * as Mensagens from '../components/toastr';
 
 import UsuarioService from "../app/service/usuarioService";
+import AuthService from "../app/service/authService";
 
 class CadastroUsuario extends React.Component {
 
@@ -46,7 +47,12 @@ class CadastroUsuario extends React.Component {
     }
 
     cancelar = () => {
-        this.props.history.push('/login');
+        if(AuthService.isUsuarioAutenticado()){
+            this.props.history.push('/home');
+        } else {
+            this.props.history.push('/login');
+        }
+        
     }
 
     render(){
